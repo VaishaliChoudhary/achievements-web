@@ -1,0 +1,180 @@
+*
+{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+body{
+    background-color: #E2E2E2;
+
+}
+
+.header
+{
+    display:grid;
+    padding:20px;
+    text-align: center;
+    color: #3C4048;
+    background-color: #00ABB3;
+}
+
+.container
+{
+    max-width:1200px;
+    margin:20px auto;
+    padding:30px;
+    
+}
+
+.container .row
+{
+    display:grid;
+    grid-template-columns: 1fr 3px 1fr;
+    column-gap: 40px;
+
+}
+
+.row .date
+{
+   grid-area:theDate;
+}
+
+.row .line
+{
+    position: relative;
+    background-color: #3C4048;
+    grid-area: theLine ;
+}
+
+.line span{
+    position:absolute;
+    width:20px;
+    height:20px;
+    background-color: #3C4048 ;
+    border:3px solid white;
+    border-radius: 50%;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    transition: all 0.5s;
+}
+
+.line .last-point
+{
+    top:initial;
+    bottom:0;
+}
+
+.row .content
+{
+    padding:20px;
+    background-color: white;
+    border-radius: 10px;
+    grid-area: theContent;
+}
+
+.content h2{
+    font-size: 30px;
+    padding-bottom: 1rem;
+    color:#00ABB3;
+}
+
+.content p{
+    font-size: 20px;
+    line-height: 1.5;
+
+}
+
+.row:nth-child(odd)
+{
+    grid-template-areas:'theDate theLine theContent';
+}
+
+.row:nth-child(even)
+{
+    grid-template-areas: 'theContent theLine theDate';
+}
+
+.row .content, .row .date
+{
+    margin-bottom: 35px;
+}
+
+
+
+.row:hover .line span:not(.last-point){
+    background-color: #00ABB3;
+    box-shadow:0 0 9px 3px #00ABB3;
+}
+
+
+/*.footer
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+*/
+
+#copyrgt
+{
+    display:grid;
+    background-color: #00ABB3;
+    text-align: center;
+    color: #3C4048;
+    padding: 10px;
+}
+
+@media(max-width:760px)
+{
+    .row:nth-child(odd),
+    .row:nth-child(even)
+    {
+        grid-template-columns : 2px 1fr;
+        grid-template-areas:'theLine theDate'
+                            'theLine theContent';
+    }
+
+    .row .content{
+        margin-bottom: 25px;
+    }
+
+    .row .last
+    {
+        margin-bottom: 5px;
+    }
+}
+
+@media(max-width:520px)
+{
+    
+    .row .line
+    {
+        display:none;
+    }
+
+    .row:nth-child(odd),
+    .row:nth-child(even)
+    {
+        grid-template-columns: 1fr;
+        column-gap: 0;
+    }
+
+    #copyrgt
+    {
+      display:block;
+      background-color: #00ABB3;
+      text-align: center;
+      color: #3C4048;
+      padding: 0.5rem;
+      font-size: 15px;
+   } 
+}
+
+
+
